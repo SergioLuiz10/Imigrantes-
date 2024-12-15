@@ -12,5 +12,11 @@ dfBrasil = pd.DataFrame(brasil_dic)
 plt.figure(plt.figure(figsize=(10, 6)))
 plt.plot(dfBrasil["anoImi"],dfBrasil["valorImi"])
 plt.xticks(["1980","1985","1990","1995","2000","2005","2010"])
+plt.title("Imigrações do Brasil para o Canadá")
+plt.xlabel("Anos das imimigrações")
+plt.ylabel("Número de imigrantes")
 plt.show()
 
+
+
+ 

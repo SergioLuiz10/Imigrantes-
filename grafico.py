@@ -45,7 +45,6 @@ axs[1].set_xlabel("País")
 axs[1].set_ylabel("Número de imigrantes") 
 axs[1].grid()
 
-
 fig, axs = plt.subplots(2, 2, figsize=(16, 8))
 axs[0][0].plot(dfAr["anoImiAr"], dfAr["qtdImiAR"], label="Argentina", color="blue")
 axs[0][0].set_title("Argentina")
@@ -77,8 +76,11 @@ for ax in axs.flat:
     ax.legend(loc="best")
 
 
+yMin = 0
+yMax = 7000
 
-
+for ax in axs.ravel():
+ ax.set_ylim(yMin, yMax)
 
 plt.tight_layout()
 plt.show()

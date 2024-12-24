@@ -44,35 +44,45 @@ axs[1].set_title("Distribuição de Imigrantes (1980-2013)")
 axs[1].set_xlabel("País")
 axs[1].set_ylabel("Número de imigrantes") 
 axs[1].grid()
-
 fig, axs = plt.subplots(2, 2, figsize=(16, 8))
-axs[0][0].plot(dfAr["anoImiAr"], dfAr["qtdImiAR"], label="Argentina", color="blue")
-axs[0][0].set_title("Argentina")
-axs[0][0].set_xlabel("Ano")
-axs[0][0].set_ylabel("Imigrantes")
+fig.suptitle('Vendas no período de janeiro a dezembro de 2022 nas lojas A, B, C e D', fontsize=16)
+
+axs[0][0].plot(dfAr["anoImiAr"], dfAr["qtdImiAR"], label="Argentina", color="blue", lw=3, marker='o')
+axs[0][0].set_title("Argentina", fontsize=12)
+axs[0][0].set_xlabel("Ano", fontsize=12)
+axs[0][0].set_ylabel("Imigrantes", fontsize=12)
+axs[0][0].yaxis.set_tick_params(labelsize=12)
 axs[0][0].grid()
 
-axs[0][1].plot(dfBra["anoImiBra"], dfBra["qtdImiBra"], label="Brasil", color="red")
-axs[0][1].set_title("Brasil")
-axs[0][1].set_xlabel("Ano")
-axs[0][1].set_ylabel("Imigrantes")
+axs[0][1].plot(dfBra["anoImiBra"], dfBra["qtdImiBra"], label="Brasil", color="red", lw=3, marker='o')
+axs[0][1].set_title("Brasil", fontsize=12)
+axs[0][1].set_xlabel("Ano", fontsize=12)
+axs[0][1].set_ylabel("Imigrantes", fontsize=12)
+axs[0][1].yaxis.set_tick_params(labelsize=12)
+
 axs[0][1].grid()
 
-axs[1][0].plot(years, df.loc["Colômbia", years].values, label="Colômbia", color="green")
-axs[1][0].set_title("Colômbia")
-axs[1][0].set_xlabel("Ano")
-axs[1][0].set_ylabel("Imigrantes")
+axs[1][0].plot(years, df.loc["Colômbia", years].values, label="Colômbia", color="green", lw=3, marker='o')
+axs[1][0].set_title("Colômbia", fontsize=12)
+axs[1][0].set_xlabel("Ano", fontsize=12)
+axs[1][0].set_ylabel("Imigrantes", fontsize=12)
+
+axs[1][0].yaxis.set_tick_params(labelsize=12)
+
 axs[1][0].grid()
 
-axs[1][1].plot(years, df.loc["Peru", years].values, label="Peru", color="purple")
-axs[1][1].set_title("Peru")
-axs[1][1].set_xlabel("Ano")
-axs[1][1].set_ylabel("Imigrantes")
+axs[1][1].plot(years, df.loc["Peru", years].values, label="Peru", color="purple", lw=3, marker='o')
+axs[1][1].set_title("Peru", fontsize=12)
+axs[1][1].set_xlabel("Ano", fontsize=12)
+axs[1][1].set_ylabel("Imigrantes", fontsize=12)
+axs[1][1].yaxis.set_tick_params(labelsize=12)
+
 axs[1][1].grid()
 
+
 for ax in axs.flat:
-    ax.set_xticks(years[::5])
-    ax.tick_params(axis='x', rotation=45)
+    ax.set_xticks(years[::5]) 
+    ax.tick_params(axis='x', rotation=45, labelsize=12)
     ax.legend(loc="best")
 
 

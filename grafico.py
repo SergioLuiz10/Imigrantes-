@@ -45,7 +45,6 @@ axs[1].set_xlabel("País")
 axs[1].set_ylabel("Número de imigrantes") 
 axs[1].grid()
 fig, axs = plt.subplots(2, 2, figsize=(16, 8))
-fig.suptitle('Vendas no período de janeiro a dezembro de 2022 nas lojas A, B, C e D', fontsize=16)
 
 axs[0][0].plot(dfAr["anoImiAr"], dfAr["qtdImiAR"], label="Argentina", color="blue", lw=3, marker='o')
 axs[0][0].set_title("Argentina", fontsize=12)
@@ -91,6 +90,16 @@ yMax = 7000
 
 for ax in axs.ravel():
  ax.set_ylim(yMin, yMax)
+
+
+cores = ["red", "blue", "green", "yellow", "orange", "purple", "pink", "brown", "black", "white", "gray", "cyan"]
+fig,ax=plt.subplots(figsize=(12,4))
+americaSul = df.query('Região == "América do Sul"')
+ax.bar(americaSul.index,americaSul["Total"],color=cores)
+ax.set_title("Imigração da América do Sul para o Canáda",loc="left",fontsize=12)
+ax.set_ylabel("Total de Imigrantes", fontsize=12)
+ax.xaxis.set_tick_params(labelsize=12)
+ax.yaxis.set_tick_params(labelsize=12)
 
 plt.tight_layout()
 plt.show()

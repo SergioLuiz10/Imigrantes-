@@ -92,12 +92,20 @@ for ax in axs.ravel():
  ax.set_ylim(yMin, yMax)
 
 
-colors = ["red", "blue", "green", "yellow", "orange", "purple", "pink", "brown", "black", "white", "gray", "cyan"]
+
+
 fig,ax=plt.subplots(figsize=(12,4))
 americaSul=df.query('Região=="América do Sul"')
-americaSul_sort=americaSul.sort_values("Total",ascending=True)
-ax.barh(americaSul_sort.index,americaSul_sort["Total"],color=colors)
-ax.set_title("Países da América do Sul e Quantidade de Imigrantes para o Canáda",loc="left",fontsize=12)
+americasulSorted=americaSul.sort_values("Total",ascending=True)
+colors = []
+for País in americasulSorted.index:
+    if(País=="Brasil"):
+        colors.append("green")
+    else:
+        colors.append("Silver")    
+
+ax.barh(americasulSorted.index,americasulSorted["Total"],color=colors)
+ax.set_title("Brasil ",loc="left",fontsize=12)
 ax.set_xlabel("Total de Imigrantes",fontsize=12)
 ax.xaxis.set_tick_params(labelsize=12)
 ax.yaxis.set_tick_params(labelsize=12)

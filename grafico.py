@@ -92,24 +92,25 @@ for ax in axs.ravel():
  ax.set_ylim(yMin, yMax)
 
 
-
-
 fig,ax=plt.subplots(figsize=(12,4))
+cores=[]
 americaSul=df.query('Região=="América do Sul"')
-americasulSorted=americaSul.sort_values("Total",ascending=True)
-colors = []
-for País in americasulSorted.index:
+americasul_sort=americaSul.sort_values(["Total"],ascending=True)
+for País in americasul_sort.index:
     if(País=="Brasil"):
-        colors.append("green")
+        cores.append("green")
     else:
-        colors.append("Silver")    
+        cores.append("silver")
 
-ax.barh(americasulSorted.index,americasulSorted["Total"],color=colors)
-ax.set_title("Brasil ",loc="left",fontsize=12)
+for i, v in enumerate(americasul_sort["Total"]): 
+    ax.text(v + 20, i, str(v), va='center', fontsize=10, color='black')
+
+ax.barh(americasul_sort.index,americasul_sort["Total"],color=cores)
+ax.set_title("Brasil é o 4 maior país com em número de imigrantes para o Canáda \n entre 1980 a 2013",loc="left",fontsize=12)
 ax.set_xlabel("Total de Imigrantes",fontsize=12)
 ax.xaxis.set_tick_params(labelsize=12)
 ax.yaxis.set_tick_params(labelsize=12)
-
+fig.savefig("gráficotes.png",transparent=False)
 plt.tight_layout()
 plt.show()
 

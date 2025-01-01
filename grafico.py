@@ -109,14 +109,15 @@ fig.savefig("gráficotes.png", transparent=False)
 plt.tight_layout()
 plt.show()
 
-# Gráfico do Top 10 com seaborn
-plt.figure(figsize=(10, 6))  # Nova figura
+
+
 sns.set_theme(style="whitegrid")
+fig, ax = plt.subplots(figsize=(12, 4))
 valor_top10 = df.sort_values('Total', ascending=False).head(10)
-sns.barplot(data=valor_top10, y=valor_top10.index, x="Total", orient="h", palette="viridis")
-plt.title("Top 10 Países com Mais Imigrantes para o Canadá (1980-2013)", fontsize=14)
-plt.xlabel("Total de Imigrantes", fontsize=12)
-plt.ylabel("País", fontsize=12)
-plt.tight_layout()
-plt.show()  # Exibe somente este gráfico
+
+sns.barplot(data=valor_top10, y=valor_top10.index, x="Total", orient="h", palette="viridis", ax=ax)
+ax.set_title("Top 10 Países com Mais Imigrantes para o Canadá (1980-2013)", fontsize=14)
+ax.set_xlabel("Total de Imigrantes", fontsize=12)
+ax.yaxis.set_tick_params(labelsize=7)
+plt.show()
 

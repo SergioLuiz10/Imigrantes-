@@ -109,15 +109,14 @@ fig.savefig("gráficotes.png", transparent=False)
 plt.tight_layout()
 plt.show()
 
+def graficoTop10(palette="mako"):
+    fig, ax = plt.subplots(figsize=(12, 4))
+    valor_top10 = df.sort_values('Total', ascending=False).head(10)
+    ax=sns.barplot(data=valor_top10, y=valor_top10.index, x="Total", orient="h", palette=palette)
+    ax.set_title("Top 10 Países com Mais Imigrantes para o Canadá (1980-2013)", fontsize=14, loc="left")
+    ax.set_xlabel("Total de Imigrantes", fontsize=12)
+    ax.yaxis.set_tick_params(labelsize=7)
+    plt.tight_layout()  
+    plt.show()
 
-
-sns.set_theme(style="whitegrid")
-fig, ax = plt.subplots(figsize=(12, 4))
-valor_top10 = df.sort_values('Total', ascending=False).head(10)
-
-sns.barplot(data=valor_top10, y=valor_top10.index, x="Total", orient="h", palette="viridis", ax=ax)
-ax.set_title("Top 10 Países com Mais Imigrantes para o Canadá (1980-2013)", fontsize=14)
-ax.set_xlabel("Total de Imigrantes", fontsize=12)
-ax.yaxis.set_tick_params(labelsize=7)
-plt.show()
-
+graficoTop10()

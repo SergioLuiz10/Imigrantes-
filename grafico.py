@@ -1,6 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+import plotly.express as px
 
 df = pd.read_csv("C:\\Users\\sergi\\.vscode\\Python data\\imigrantes_canada.csv")
 df.set_index("País", inplace=True)
@@ -109,15 +110,27 @@ fig.savefig("gráficotes.png", transparent=False)
 plt.tight_layout()
 plt.show()
 
-def graficoTop10(palette="mako",style="whitegrid"):
-    sns.set_theme(style=style)
+def graficoTop10(palette="mako",style="whitegrid",):
+    sns.set_theme(style=style,)
     fig, ax = plt.subplots(figsize=(12, 4))
     valor_top10 = df.sort_values('Total', ascending=False).head(10)
     ax=sns.barplot(data=valor_top10, y=valor_top10.index, x="Total", orient="h", palette=palette)
     ax.set_title("Top 10 Países com Mais Imigrantes para o Canadá (1980-2013)", fontsize=14, loc="left")
     ax.set_xlabel("Total de Imigrantes", fontsize=12)
-    ax.yaxis.set_tick_params(labelsize=8)
+    ax.yaxis.set_tick_params(labelsize=8)    
     plt.tight_layout()  
     plt.show()
 
 graficoTop10()
+
+
+fig=px.line(
+    dfBra,
+    x="anoImiBra",
+    y="qtdImiBra",
+    title="Imigração do Brasil para o Canadá (1980-2013)",
+    labels={"anoImiBra": "Ano", "qtdImiBra": "Número de Imigrantes"},
+)
+fig.update_layout(height=400,width=1000, xaxis=dict(
+        tickangle=-45))
+fig.show()

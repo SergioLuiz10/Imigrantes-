@@ -127,10 +127,13 @@ graficoTop10()
 fig=px.line(
     dfBra,
     x="anoImiBra",
-    y="qtdImiBra",
-    title="Imigração do Brasil para o Canadá (1980-2013)",
-    labels={"anoImiBra": "Ano", "qtdImiBra": "Número de Imigrantes"},
+    y="qtdImiBra'   ",
+    title="Imigração do Brasil para o Canadá (1980-2013)",)
+fig.update_layout(
+    width=1000, 
+    height=500, 
+    xaxis={'tickangle': -45},
+    xaxis_title='Ano',
+    yaxis_title='Número de imigrantes'
 )
-fig.update_layout(height=400,width=1000, xaxis=dict(
-        tickangle=-45))
 fig.show()

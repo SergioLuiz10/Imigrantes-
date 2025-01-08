@@ -124,12 +124,12 @@ def graficoTop10(palette="mako",style="whitegrid",):
 graficoTop10()
 
 
-#
+
 
 americaSul.head()
 df_americasul_del = americaSul.drop(["Continente", "Região", "Total"], axis=1)
 dfAmericaSulfi=df_americasul_del.T
-fig=px.line(dfAmericaSulfi,x=dfAmericaSulfi.index,y=dfAmericaSulfi.columns,title="Imigração dos 5 Maiores Países da América do Sul para o Canadá(1980-2013)")
+fig=px.line(dfAmericaSulfi,x=dfAmericaSulfi.index,y=dfAmericaSulfi.columns,title="Imigração dos 5 Maiores Países da América do Sul para o Canadá(1980-2013)",markers=True)
 fig.update_layout(
     width=1000,
     height=500,
@@ -140,8 +140,8 @@ fig.update_layout(
     font_size=14,
     font_color="grey",
     title_font_color="black",
-    title_font_size=14,
-    marker=True
-)
+    title_font_size=14,)
 fig.show()
+
+fig.write_html("gráficoo.html")
 

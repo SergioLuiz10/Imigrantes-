@@ -114,7 +114,7 @@ def graficoTop10(palette="mako",style="whitegrid",):
     sns.set_theme(style=style,)
     fig, ax = plt.subplots(figsize=(12, 4))
     valor_top10 = df.sort_values('Total', ascending=False).head(10)
-    ax=sns.barplot(data=valor_top10, y=valor_top10.index, x="Total", orient="h", palette=palette)
+    ax=sns.barplot(data=valor_top10, y=valor_top10.index, x="Total", orient="h", palette=palette,legend=False)
     ax.set_title("Top 10 Países com Mais Imigrantes para o Canadá (1980-2013)", fontsize=14, loc="left")
     ax.set_xlabel("Total de Imigrantes", fontsize=12)
     ax.yaxis.set_tick_params(labelsize=8)    
@@ -124,16 +124,24 @@ def graficoTop10(palette="mako",style="whitegrid",):
 graficoTop10()
 
 
-fig=px.line(
-    dfBra,
-    x="anoImiBra",
-    y="qtdImiBra'   ",
-    title="Imigração do Brasil para o Canadá (1980-2013)",)
+#
+
+americaSul.head()
+df_americasul_del = americaSul.drop(["Continente", "Região", "Total"], axis=1)
+dfAmericaSulfi=df_americasul_del.T
+fig=px.line(dfAmericaSulfi,x=dfAmericaSulfi.index,y=dfAmericaSulfi.columns,title="Imigração dos 5 Maiores Países da América do Sul para o Canadá(1980-2013)")
 fig.update_layout(
-    width=1000, 
-    height=500, 
+    width=1000,
+    height=500,
     xaxis={'tickangle': -45},
-    xaxis_title='Ano',
-    yaxis_title='Número de imigrantes'
+    xaxis_title="Anos",
+    yaxis_title="Imigrantes",
+    font_family="Arial",
+    font_size=14,
+    font_color="grey",
+    title_font_color="black",
+    title_font_size=14,
+    marker=True
 )
 fig.show()
+
